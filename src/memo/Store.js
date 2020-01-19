@@ -46,14 +46,22 @@ function addReduce(state, action){
 function findReduce(state, action){
   let f = action.find;
   let fdata = [];
-  state.data.forEach((value)=>{
-    if (value.message.indexOf(f) >= 0){
-      fdata.push(value);
-    }
-  });
+  let message = "";
+  if(f != "" && f != null){
+    state.data.forEach((value)=>{
+      if (value.message.indexOf(f) >= 0){
+        fdata.push(value);
+      }
+    });
+    message = 'find "' + f + '":';
+  } else {
+    fdata = state.data;
+    message = 'please type message:';
+  }
+  
   return {
     data:state.data,
-    message:'find "' + f + '":',
+    message:message,
     mode:'find',
     fdata:fdata
   };

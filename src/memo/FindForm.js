@@ -17,35 +17,20 @@ class FindForm extends Component {
 
   constructor(props){
     super(props);
-    this.state = {
-      find:''
-    }
+    this.state = {}
     this.doChange = this.doChange.bind(this);
-    this.doAction = this.doAction.bind(this);
   }
 
 
   doChange(e){
-    this.setState({
-      find: e.target.value
-    });
-  }
-
-
-  doAction(e){
-    e.preventDefault();
-    let action = findTodo(this.state.find);
+    let action = findTodo(e.target.value);
     this.props.dispatch(action);
   }
 
-
   render(){
     return (
-      <form onSubmit={this.doAction}>
-        <input type="text" size="10" onChange={this.doChange}
-          style={this.input} value={this.state.message} />
-        <input type="submit" style={this.btn} value="Find"/>
-      </form>
+      <input type="text" size="10" onChange={this.doChange}
+        style={this.input} value={this.state.message} />
     );
   }
 }
