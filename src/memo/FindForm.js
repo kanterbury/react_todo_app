@@ -1,18 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { findTodo } from './Store';
+import searchIcon from './icon/search.png';
 
 
 class FindForm extends Component {
   input = {
-    fontSize:"14pt",
+    fontSize:"16pt",
     color:"#006",
     padding:"0px",
-  }
-  btn = {
-    fontSize:"12pt",
-    color:"#006",
-    padding:"1px 10px",
   }
 
   constructor(props){
@@ -29,8 +25,11 @@ class FindForm extends Component {
 
   render(){
     return (
-      <input type="text" size="10" onChange={this.doChange}
+      <div>
+        <img src={searchIcon} alt="search" />
+        <input type="text" size="10" onChange={this.doChange}
         style={this.input} value={this.state.message} />
+      </div>
     );
   }
 }
