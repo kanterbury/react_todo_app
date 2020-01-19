@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import MemoStore from './memo/Store'
+import TodoStore from './memo/Store'
 
 
 // 表示をレンダリング
 ReactDOM.render(
-    <Provider store={MemoStore}>
+    <Provider store={TodoStore}>
         <App />
     </Provider>,
     document.getElementById('root')

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { addMemo } from './Store';
+import { addTodo } from './Store';
 
 
 class AddForm extends Component {
@@ -35,7 +35,7 @@ class AddForm extends Component {
 
   doAction(e){
     e.preventDefault();
-    let action = addMemo(this.state.message);
+    let action = addTodo(this.state.message);
     this.props.dispatch(action);
     this.setState({
       message: ''

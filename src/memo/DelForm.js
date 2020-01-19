@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteMemo } from './Store';
+import { deleteTodo } from './Store';
 
 
 class DelForm extends Component {
@@ -35,7 +35,7 @@ class DelForm extends Component {
 
   doAction(e){
     e.preventDefault();
-    let action = deleteMemo(this.state.number);
+    let action = deleteTodo(this.state.number);
     this.props.dispatch(action);
     this.setState({
       number: 0

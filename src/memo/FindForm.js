@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { findMemo } from './Store';
+import { findTodo } from './Store';
 
 
 class FindForm extends Component {
@@ -34,7 +34,7 @@ class FindForm extends Component {
 
   doAction(e){
     e.preventDefault();
-    let action = findMemo(this.state.find);
+    let action = findTodo(this.state.find);
     this.props.dispatch(action);
   }
 

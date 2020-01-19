@@ -8,7 +8,7 @@ const initData = {
 };
 
 // レデューサー
-export function memoReducer(state = initData, action) {
+export function todoReducer(state = initData, action) {
   switch (action.type) {
     case 'ADD':
       return addReduce(state, action);
@@ -74,7 +74,7 @@ function deleteReduce(state, action){
 // アクションクリエーター
 
 // メモ追加のアクション
-export function addMemo(text) {
+export function addTodo(text) {
   return {
     type: 'ADD',
     message:text
@@ -82,7 +82,7 @@ export function addMemo(text) {
 }
 
 // メモ削除のアクション
-export function deleteMemo(num) {
+export function deleteTodo(num) {
   return {
     type: 'DELETE',
     index:num
@@ -90,7 +90,7 @@ export function deleteMemo(num) {
 }
 
 // メモ検索のアクション
-export function findMemo(text) {
+export function findTodo(text) {
   return {
     type: 'FIND',
     find:text
@@ -98,4 +98,4 @@ export function findMemo(text) {
 }
 
 // ストアを作成
-export default createStore(memoReducer);
+export default createStore(todoReducer);

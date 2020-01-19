@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteMemo } from './Store';
+import { deleteTodo } from './Store';
 
 
 class Item extends Component {
@@ -51,7 +51,7 @@ class Item extends Component {
   doAction(e){
     e.preventDefault();
     console.log(this.props.index);
-    let action = deleteMemo(this.props.index);
+    let action = deleteTodo(this.props.index);
     this.props.dispatch(action);
   }
 
