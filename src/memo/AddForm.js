@@ -11,7 +11,7 @@ class AddForm extends Component {
     margin:"5px 0px"
   }
   btn = {
-    fontSize:"14pt",
+    fontSize:"16pt",
     color:"#006",
     padding:"2px 10px"
   }
@@ -50,7 +50,7 @@ class AddForm extends Component {
         <form onSubmit={this.doAction}>
         <input type="text" size="40" onChange={this.doChange}
           style={this.input} value={this.state.message} required />
-        <input type="submit" style={this.btn} value="Add"/>
+        <button style={this.btn} onClick={this.doAction}>Add</button>
         </form>
       </div>
     );

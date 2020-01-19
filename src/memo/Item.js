@@ -37,7 +37,7 @@ class Item extends Component {
     width:"80px"
   }
   btn = {
-    fontSize:"12pt",
+    fontSize:"14pt",
     color:"#006",
     padding:"2px 10px"
   }
