@@ -9,36 +9,36 @@ class Todo extends Component {
 
 
   render(){
-    let todoList;
+    let data;
     let n = 0;
     switch (this.props.mode){
       case 'default':
-      todoList = this.props.todoList.map((value)=>(
+      data = this.props.data.map((value)=>(
         <Item key={value.message} value={value} index={n++} />
       ));
       break;
 
       case 'find':
-      todoList = this.props.fTodoList.map((value)=>(
+      data = this.props.fdata.map((value)=>(
         <Item key={value.message} value={value} index={n++}/>
       ));
       break;
 
 
       case 'delete':
-      todoList = this.props.todoList.map((value)=>(
+      data = this.props.data.map((value)=>(
         <Item key={value.message} value={value} index={n++} />
       ));
       break;
 
 
       default:
-      todoList = this.props.todoList.map((value)=>(
+      data = this.props.data.map((value)=>(
         <Item key={value.message} value={value} index={n++} />
       ));
     }
     return (
-      <table><tbody>{todoList}</tbody></table>
+      <table><tbody>{data}</tbody></table>
     );
   }
 }

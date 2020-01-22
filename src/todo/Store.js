@@ -1,9 +1,10 @@
 import { createStore } from 'redux';
 
 const initData = {
-  todoList:[{message:'sample', created:new Date()}],
+  data:[{message:'sample data', created:new Date()}],
+  message:'please type message:',
   mode:'default',
-  fTodoList:[]
+  fdata:[]
 };
 
 // レデューサー
@@ -27,45 +28,54 @@ export function todoReducer(state = initData, action) {
 
 // メモ追加のレデュース処理
 function addReduce(state, action){
-  let newTodo = {
+  let data = {
     message:action.message,
     created:new Date()
   };
-  let newTodoList = state.todoList.slice();
-  newTodoList.unshift(newTodo);
+  let newdata = state.data.slice();
+  newdata.unshift(data);
   return {
-    todoList:newTodoList,
+    data:newdata,
+    message:'Added!',
     mode:'default',
-    fTodoList:[]
+    fdata:[]
   };
 }
 
 // メモ検索のレデュース処理
 function findReduce(state, action){
   let f = action.find;
-  let fTodoList = [];
-  
-  state.todoList.forEach((value)=>{
-    if (value.message.indexOf(f) >= 0){
-      fTodoList.push(value);
-    }
-  });
+  let fdata = [];
+  let message = "";
+  if(f != "" && f != null){
+    state.data.forEach((value)=>{
+      if (value.message.indexOf(f) >= 0){
+        fdata.push(value);
+      }
+    });
+    message = 'find "' + f + '":';
+  } else {
+    fdata = state.data;
+    message = 'please type message:';
+  }
   
   return {
-    todoList:state.todoList,
+    data:state.data,
+    message:message,
     mode:'find',
-    fTodoList:fTodoList
+    fdata:fdata
   };
 }
 
 // メモ削除のレデュース処理
 function deleteReduce(state, action){
-  let newTodoList = state.todoList.slice();
-  newTodoList.splice(action.index, 1);
+  let newdata = state.data.slice();
+  newdata.splice(action.index, 1);
   return {
-    todoList:newTodoList,
+    data:newdata,
+    message:'delete "' + action.index + '":',
     mode:'delete',
-    fTodoList:[]
+    fdata:[]
   }
 }
 
