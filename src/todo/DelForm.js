@@ -45,7 +45,7 @@ class DelForm extends Component {
 
   render(){
     let n = 0;
-    let items = this.props.data.map((value)=>(
+    let items = this.props.todoList.map((value)=>(
       <option key={n} value={n++}>{value.message.substring(0,10)}</option>
     ));
     return (
