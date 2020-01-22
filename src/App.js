@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import Todo from './memo/Todo';
-import AddForm from './memo/AddForm';
-import FindForm from './memo/FindForm';
+import Todo from './todo/Todo';
+import AddForm from './todo/AddForm';
+import FindForm from './todo/FindForm';
 
 // Appコンポーネント
 class App extends Component {

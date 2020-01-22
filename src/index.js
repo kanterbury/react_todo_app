@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
-import TodoStore from './memo/Store'
+import TodoStore from './todo/Store'
 
 
 // 表示をレンダリング
