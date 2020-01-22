@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
-import Memo from './memo/Memo';
+import Todo from './memo/Todo';
 import AddForm from './memo/AddForm';
 import FindForm from './memo/FindForm';
 
@@ -19,7 +19,7 @@ class App extends Component {
         <AddForm />
         <hr />
         <FindForm />
-        <Memo />
+        <Todo />
       </div>
     );
   }

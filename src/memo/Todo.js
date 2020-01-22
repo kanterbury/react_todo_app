@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import Item from './Item';
 
 
-class Memo extends Component {
+class Todo extends Component {
 
 
   render(){
@@ -42,4 +42,4 @@ class Memo extends Component {
     );
   }
 }
-export default connect((state)=>state)(Memo);
+export default connect((state)=>state)(Todo);
