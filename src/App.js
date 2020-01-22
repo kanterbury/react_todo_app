@@ -7,9 +7,6 @@ import FindForm from './memo/FindForm';
 
 // Appコンポーネント
 class App extends Component {
-  td = {
-    width:"250px"
-  }
 
   constructor(props){
     super(props);
@@ -18,12 +15,10 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Memo</h1>
+        <h1>Todo</h1>
         <AddForm />
         <hr />
-        <table><tbody><tr>
-          <td style={this.td}><FindForm /></td>
-        </tr></tbody></table>
+        <FindForm />
         <Memo />
       </div>
     );
