@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteTodo } from './Store';
+import { deleteTodo, doneTodo } from './Store';
 
 
 class Item extends Component {
@@ -45,16 +45,20 @@ class Item extends Component {
   constructor(props){
     super(props);
 
-    this.doAction = this.doAction.bind(this);
+    this.doDone = this.doDone.bind(this);
+    this.doDelete = this.doDelete.bind(this);
   }
 
-  doAction(e){
-    console.log(this.props.index);
+  doDelete(){
     let action = deleteTodo(this.props.index);
     this.props.dispatch(action);
   }
 
-  
+  doDone(){
+    let action = doneTodo(this.props.index);
+    this.props.dispatch(action);
+  }
+
 
   render(){
     let d = this.props.value.created;
@@ -63,7 +67,8 @@ class Item extends Component {
     <tr><th style={this.th}>No, {this.props.index}</th>
       <td style={this.td}>{this.props.value.message}</td>
       <td style={this.date}>{f}</td>
-      <td style={this.button}><button style={this.btn} onClick={this.doAction}>Del</button></td>
+      <td style={this.button}><button style={this.btn} onClick={this.doDone}>Done</button></td>
+      <td style={this.button}><button style={this.btn} onClick={this.doDelete}>Del</button></td>
     </tr>
     );
   }

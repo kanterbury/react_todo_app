@@ -22,6 +22,9 @@ export function todoReducer(state = initData, action) {
     case 'FIND':
       return findReduce(state, action);
 
+    case 'DONE_TODO':
+      return doneTodoReduce(state, action);
+
     default:
       return state;
   }
@@ -88,6 +91,26 @@ function deleteDoneReduce(state, action){
   }
 }
 
+//Todo完了のレデュース処理
+function doneTodoReduce(state, action){
+  //doneListに完了したTodoを追加
+  let newDone = {
+    message:state.todoList[action.index].message,
+    created:new Date()
+  };
+  let newDoneList = state.doneList.slice();
+  newDoneList.unshift(newDone);
+  //todoListから完了したタスクを削除
+  let newTodoList = state.todoList.slice();
+  newTodoList.splice(action.index, 1);
+  return {
+    todoList:newTodoList,
+    doneList:newDoneList,
+    mode:'default',
+    fTodoList:[]
+  };
+}
+
 // アクションクリエーター
 
 // メモ追加のアクション
@@ -119,6 +142,14 @@ export function findTodo(text) {
   return {
     type: 'FIND',
     find:text
+  }
+}
+
+//Todo完了のアクション
+export function doneTodo(num) {
+  return {
+    type: 'DONE_TODO',
+    index:num
   }
 }
 
