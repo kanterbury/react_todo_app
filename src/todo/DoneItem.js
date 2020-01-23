@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { deleteTodo } from './Store';
+import { deleteDone } from './Store';
 
-
-class Item extends Component {
+class DoneItem extends Component {
 
   th = {
     fontSize:"14pt",
@@ -49,8 +48,7 @@ class Item extends Component {
   }
 
   doAction(e){
-    console.log(this.props.index);
-    let action = deleteTodo(this.props.index);
+    let action = deleteDone(this.props.index);
     this.props.dispatch(action);
   }
 
@@ -68,4 +66,4 @@ class Item extends Component {
     );
   }
 }
-export default connect()(Item);
+export default connect()(DoneItem);

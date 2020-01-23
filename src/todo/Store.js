@@ -2,18 +2,22 @@ import { createStore } from 'redux';
 
 const initData = {
   todoList:[{message:'sample', created:new Date()}],
+  doneList:[{message:'sample done', created:new Date()}],
   mode:'default',
   fTodoList:[]
 };
 
 // レデューサー
-export function todoReducer(state = initData, action) {
+export function todoReducer(state = initData, action) {  
   switch (action.type) {
     case 'ADD':
       return addReduce(state, action);
 
-    case 'DELETE':
-      return deleteReduce(state, action);
+    case 'DELETE_TODO':
+      return deleteTodoReduce(state, action);
+
+      case 'DELETE_DONE':
+        return deleteDoneReduce(state, action);
 
     case 'FIND':
       return findReduce(state, action);
@@ -35,6 +39,7 @@ function addReduce(state, action){
   newTodoList.unshift(newTodo);
   return {
     todoList:newTodoList,
+    doneList:state.doneList,
     mode:'default',
     fTodoList:[]
   };
@@ -53,17 +58,31 @@ function findReduce(state, action){
   
   return {
     todoList:state.todoList,
+    doneList:state.doneList,
     mode:'find',
     fTodoList:fTodoList
   };
 }
 
 // メモ削除のレデュース処理
-function deleteReduce(state, action){
+function deleteTodoReduce(state, action){
   let newTodoList = state.todoList.slice();
   newTodoList.splice(action.index, 1);
   return {
     todoList:newTodoList,
+    doneList:state.doneList,
+    mode:'delete',
+    fTodoList:[]
+  }
+}
+
+// メモ削除のレデュース処理
+function deleteDoneReduce(state, action){
+  let newDoneList = state.doneList.slice();
+  newDoneList.splice(action.index, 1);
+  return {
+    todoList:state.todoList,
+    doneList:newDoneList,
     mode:'delete',
     fTodoList:[]
   }
@@ -82,7 +101,15 @@ export function addTodo(text) {
 // メモ削除のアクション
 export function deleteTodo(num) {
   return {
-    type: 'DELETE',
+    type: 'DELETE_TODO',
+    index:num
+  }
+}
+
+// メモ削除のアクション
+export function deleteDone(num) {
+  return {
+    type: 'DELETE_DONE',
     index:num
   }
 }

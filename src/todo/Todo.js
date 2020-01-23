@@ -11,6 +11,8 @@ class Todo extends Component {
   render(){
     let todoList;
     let n = 0;
+    // console.log(this.props.todoList);
+
     switch (this.props.mode){
       case 'default':
       todoList = this.props.todoList.map((value)=>(

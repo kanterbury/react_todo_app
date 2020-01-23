@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 import Todo from './todo/Todo';
+import Done from './todo/Done'
 import AddForm from './todo/AddForm';
 import FindForm from './todo/FindForm';
 
@@ -20,6 +21,8 @@ class App extends Component {
         <hr />
         <FindForm />
         <Todo />
+        <hr />
+        <Done />
       </div>
     );
   }
