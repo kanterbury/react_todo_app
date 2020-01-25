@@ -5,11 +5,6 @@ import searchIcon from './icon/search.png';
 
 
 class FindForm extends Component {
-  input = {
-    fontSize:"16pt",
-    color:"#006",
-    padding:"0px",
-  }
 
   constructor(props){
     super(props);
@@ -25,10 +20,15 @@ class FindForm extends Component {
 
   render(){
     return (
-      <div>
-        <img src={searchIcon} alt="search" />
-        <input type="text" size="10" onChange={this.doChange}
-        style={this.input} value={this.state.message} />
+      <div className="columns">
+        <div className="column is-half field">
+          <p className="control has-icons-left">
+            <input className="input" type="text" onChange={this.doChange}  value={this.state.message} />
+            <span className="icon is-small is-left">
+            <i className="fas fa-search"></i>
+          </span>
+          </p>
+        </div>
       </div>
     );
   }
