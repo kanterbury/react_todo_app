@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import './App.css';
+// import './App.css';
 import Todo from './todo/Todo';
 import Done from './todo/Done'
 import AddForm from './todo/AddForm';
@@ -16,7 +16,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>Todo</h1>
+        <h1 class="title">Todo</h1>
         <AddForm />
         <hr />
         <FindForm />

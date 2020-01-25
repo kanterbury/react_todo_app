@@ -45,14 +45,17 @@ class AddForm extends Component {
 
   render(){
     return (
-      <div>
-        <p style={this.message}>{this.props.message}</p>
-        <form onSubmit={this.doAction}>
-        <input type="text" size="40" onChange={this.doChange}
-          style={this.input} value={this.state.message} required />
-        <button style={this.btn} onClick={this.doAction}>Add</button>
-        </form>
-      </div>
+            <form onSubmit={this.doAction}>
+            <div className="field has-addons">
+              <p className="control">
+                <input className="input" type="text" size="40" onChange={this.doChange}
+                  value={this.state.message} required />
+              </p>
+              <p className="control">
+                <button className="button is-info" onClick={this.doAction}>Add</button>
+              </p>
+              </div>
+            </form>
     );
   }
 }
