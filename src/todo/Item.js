@@ -5,6 +5,16 @@ import { deleteTodo, doneTodo } from './Store';
 
 class Item extends Component {
 
+  todo_title = {
+    fontSize:"20pt",
+  }
+
+  deadline = {
+    fontSize:"10pt",
+    padding:"0px 5px",
+    color:"gray",
+  }
+
   th = {
     fontSize:"14pt",
     backgroundColor:"blue",
@@ -60,16 +70,41 @@ class Item extends Component {
   }
 
 
+  // render(){
+  //   let d = this.props.value.created;
+  //   let f = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+  //   return (
+  //   <tr>
+  //     <td>{this.props.value.message}</td>
+  //     <td>{f}</td>
+  //     <td><button class="button is-primary" onClick={this.doDone}>Done</button></td>
+  //     <td><button class="button" onClick={this.doDelete}>Del</button></td>
+  //   </tr>
+  //   );
+  // }
+
   render(){
     let d = this.props.value.created;
     let f = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
     return (
-    <tr><th style={this.th}>No, {this.props.index}</th>
-      <td style={this.td}>{this.props.value.message}</td>
-      <td style={this.date}>{f}</td>
-      <td style={this.button}><button style={this.btn} onClick={this.doDone}>Done</button></td>
-      <td style={this.button}><button style={this.btn} onClick={this.doDelete}>Del</button></td>
-    </tr>
+    <li>
+      <nav class="level">
+        <div class="level-left">
+          <div>
+            <div style={this.todo_title}>
+              {this.props.value.message}
+            </div>
+            <div style={this.deadline}>
+            {f}まで
+            </div>
+          </div>
+        </div>
+        <div class="level-right">
+          <button class="button is-primary" onClick={this.doDone}>Done</button>
+          <button class="button" onClick={this.doDelete}>Del</button>
+        </div>
+      </nav>
+    </li>
     );
   }
 }

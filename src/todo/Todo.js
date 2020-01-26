@@ -7,7 +7,6 @@ import Item from './Item';
 
 class Todo extends Component {
 
-
   render(){
     let todoList;
     let n = 0;
@@ -39,8 +38,14 @@ class Todo extends Component {
         <Item key={value.message} value={value} index={n++} />
       ));
     }
+    // return (
+    //   <table className="table"><tbody>{todoList}</tbody></table>
+    // );
+
     return (
-      <table><tbody>{todoList}</tbody></table>
+      <div>
+        <ul>{todoList}</ul>
+      </div>
     );
   }
 }

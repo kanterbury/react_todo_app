@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import './App.css';
+import './App.css';
 import Todo from './todo/Todo';
 import Done from './todo/Done'
 import AddForm from './todo/AddForm';
