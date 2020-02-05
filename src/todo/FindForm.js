@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { findTodo } from './Store';
-import searchIcon from './icon/search.png';
 
 
 class FindForm extends Component {
