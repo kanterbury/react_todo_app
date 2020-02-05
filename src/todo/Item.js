@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteTodo, doneTodo } from './Store';
+import ClassNames from 'classnames';
 
 
 class Item extends Component {
@@ -54,9 +55,13 @@ class Item extends Component {
 
   constructor(props){
     super(props);
+    this.state={
+      isModalActive: false
+    }
 
     this.doDone = this.doDone.bind(this);
     this.doDelete = this.doDelete.bind(this);
+    this.doOpenDetail = this.doOpenDetail.bind(this);
   }
 
   doDelete(){
@@ -69,29 +74,27 @@ class Item extends Component {
     this.props.dispatch(action);
   }
 
-
-  // render(){
-  //   let d = this.props.value.created;
-  //   let f = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
-  //   return (
-  //   <tr>
-  //     <td>{this.props.value.message}</td>
-  //     <td>{f}</td>
-  //     <td><button class="button is-primary" onClick={this.doDone}>Done</button></td>
-  //     <td><button class="button" onClick={this.doDelete}>Del</button></td>
-  //   </tr>
-  //   );
-  // }
+  doOpenDetail(){
+    
+     this.setState({
+       isModalActive: true
+     });
+  }
 
   render(){
     let d = this.props.value.created;
     let f = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
+
+    const classNameForModal = ClassNames({
+      "modal": true,
+      "is-active": this.state.isModalActive
+    })
     return (
     <li>
-      <nav class="level">
-        <div class="level-left">
+      <nav className="level">
+        <div className="level-left">
           <div>
-            <div style={this.todo_title}>
+            <div id={this.props.value.message} style={this.todo_title} onClick={this.doOpenDetail}>
               {this.props.value.message}
             </div>
             <div style={this.deadline}>
@@ -99,11 +102,27 @@ class Item extends Component {
             </div>
           </div>
         </div>
-        <div class="level-right">
-          <button class="button is-primary" onClick={this.doDone}>Done</button>
-          <button class="button" onClick={this.doDelete}>Del</button>
+        <div className="level-right">
+          <button className="button is-primary" onClick={this.doDone}>Done</button>
+          <button className="button" onClick={this.doDelete}>Del</button>
         </div>
       </nav>
+      <div className={classNameForModal}>
+        <div className="modal-background"></div>
+        <div className="modal-card">
+          <header className="modal-card-head">
+            <p className="modal-card-title">Modal title</p>
+            <button className="delete" aria-label="close"></button>
+          </header>
+          <section className="modal-card-body">
+            test
+          </section>
+         <footer className="modal-card-foot">
+            <button className="button is-success">Save changes</button>
+            <button className="button">Cancel</button>
+          </footer>
+        </div>
+      </div>
     </li>
     );
   }

@@ -7,6 +7,10 @@ import Item from './Item';
 
 class Todo extends Component {
 
+  todoList_area = {
+    width:"50%"
+  }
+
   render(){
     let todoList;
     let n = 0;
@@ -43,7 +47,7 @@ class Todo extends Component {
     // );
 
     return (
-      <div>
+      <div style={this.todoList_area}>
         <ul>{todoList}</ul>
       </div>
     );
