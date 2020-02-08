@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import DoneItem from './DoneItem';
+import Item from './Item';
 
 class Done extends Component {
+
+  todoList_area = {
+    width: "50%"
+  }
 
   render(){
     let doneList;
@@ -11,10 +15,12 @@ class Done extends Component {
     console.log(this.props.doneList);
 
     doneList = this.props.doneList.map((value)=>(
-      <DoneItem key={value.message} value={value} index={n++} />
+      <Item key={value.message} value={value} index={n++} isDone={true} />
     ));
     return(
-      <table><tbody>{doneList}</tbody></table>
+      <div style={this.todoList_area}>
+        <ul>{doneList}</ul>
+      </div>
     );
   }
 }

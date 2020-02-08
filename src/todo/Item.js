@@ -16,47 +16,10 @@ class Item extends Component {
     color:"gray",
   }
 
-  th = {
-    fontSize:"14pt",
-    backgroundColor:"blue",
-    color:"white",
-    padding:"5px 10px",
-    width:"50px"
-  }
-  td = {
-    fontSize:"14pt",
-    backgroundColor:"white",
-    color:"darkblue",
-    padding:"5px 10px",
-    border:"1px solid lightblue",
-    minWidth:"300px"
-  }
-  date = {
-    fontSize:"14pt",
-    backgroundColor:"white",
-    color:"darkblue",
-    padding:"5px 10px",
-    border:"1px solid lightblue",
-    width:"80px"
-  }
-  button = {
-    fontSize:"14pt",
-    backgroundColor:"white",
-    color:"darkblue",
-    padding:"5px 10px",
-    border:"1px solid lightblue",
-    width:"80px"
-  }
-  btn = {
-    fontSize:"14pt",
-    color:"#006",
-    padding:"2px 10px"
-  }
-
   constructor(props){
     super(props);
     this.state={
-      isModalActive: false
+      isModalActive: false,
     }
 
     this.doDone = this.doDone.bind(this);
@@ -89,6 +52,11 @@ class Item extends Component {
       "modal": true,
       "is-active": this.state.isModalActive
     })
+    const classNameForDoneButton = ClassNames({
+      "button": true,
+      "is-primary": true,
+      "is-hidden": this.props.isDone,
+    })
     return (
     <li>
       <nav className="level">
@@ -103,26 +71,10 @@ class Item extends Component {
           </div>
         </div>
         <div className="level-right">
-          <button className="button is-primary" onClick={this.doDone}>Done</button>
+          <button className={classNameForDoneButton} onClick={this.doDone}>Done</button>
           <button className="button" onClick={this.doDelete}>Del</button>
         </div>
       </nav>
-      <div className={classNameForModal}>
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">Modal title</p>
-            <button className="delete" aria-label="close"></button>
-          </header>
-          <section className="modal-card-body">
-            test
-          </section>
-         <footer className="modal-card-foot">
-            <button className="button is-success">Save changes</button>
-            <button className="button">Cancel</button>
-          </footer>
-        </div>
-      </div>
     </li>
     );
   }
