@@ -6,8 +6,16 @@ import ClassNames from 'classnames';
 
 class Item extends Component {
 
+  todo_title_box = {
+    width:"70%",
+  }
+
   todo_title = {
+    width: "100%",
     fontSize:"20pt",
+    overflow:"hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
   }
 
   deadline = {
@@ -60,8 +68,8 @@ class Item extends Component {
     return (
     <li>
       <nav className="level">
-        <div className="level-left">
-          <div>
+        <div className="level-left" style={this.todo_title_box}>
+          < div style = {{width: "100%"}}>
             <div id={this.props.value.message} style={this.todo_title} onClick={this.doOpenDetail}>
               {this.props.value.message}
             </div>
