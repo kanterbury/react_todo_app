@@ -4,7 +4,8 @@ const initData = {
   todoList:[{message:'sample', created:new Date()}],
   doneList:[{message:'sample done', created:new Date()}],
   mode:'default',
-  fTodoList:[]
+  fTodoList:[],
+  fDoneList:[]
 };
 
 // レデューサー
@@ -32,7 +33,7 @@ export function todoReducer(state = initData, action) {
 
 // レデュースアクション
 
-// メモ追加のレデュース処理
+// タスク追加のレデュース処理
 function addReduce(state, action){
   let newTodo = {
     message:action.message,
@@ -44,18 +45,26 @@ function addReduce(state, action){
     todoList:newTodoList,
     doneList:state.doneList,
     mode:'default',
-    fTodoList:[]
+    fTodoList:[],
+    fDoneList:[]
   };
 }
 
-// メモ検索のレデュース処理
+// タスク検索のレデュース処理
 function findReduce(state, action){
   let f = action.find;
   let fTodoList = [];
+  let fDoneList = [];
   
   state.todoList.forEach((value)=>{
     if (value.message.indexOf(f) >= 0){
       fTodoList.push(value);
+    }
+  });
+
+  state.doneList.forEach((value) => {
+    if (value.message.indexOf(f) >= 0) {
+      fDoneList.push(value);
     }
   });
   
@@ -63,11 +72,12 @@ function findReduce(state, action){
     todoList:state.todoList,
     doneList:state.doneList,
     mode:'find',
-    fTodoList:fTodoList
+    fTodoList:fTodoList,
+    fDoneList:fDoneList
   };
 }
 
-// メモ削除のレデュース処理
+// 未完了タスク削除のレデュース処理
 function deleteTodoReduce(state, action){
   let newTodoList = state.todoList.slice();
   newTodoList.splice(action.index, 1);
@@ -75,11 +85,12 @@ function deleteTodoReduce(state, action){
     todoList:newTodoList,
     doneList:state.doneList,
     mode:'delete',
-    fTodoList:[]
+    fTodoList:[],
+    fDoneList:[]
   }
 }
 
-// メモ削除のレデュース処理
+// 完了タスク削除のレデュース処理
 function deleteDoneReduce(state, action){
   let newDoneList = state.doneList.slice();
   newDoneList.splice(action.index, 1);
@@ -87,7 +98,8 @@ function deleteDoneReduce(state, action){
     todoList:state.todoList,
     doneList:newDoneList,
     mode:'delete',
-    fTodoList:[]
+    fTodoList:[],
+    fDoneList:[]
   }
 }
 
@@ -107,13 +119,14 @@ function doneTodoReduce(state, action){
     todoList:newTodoList,
     doneList:newDoneList,
     mode:'default',
-    fTodoList:[]
+    fTodoList:[],
+    fDoneList:[]
   };
 }
 
 // アクションクリエーター
 
-// メモ追加のアクション
+// タスク追加のアクション
 export function addTodo(text) {
   return {
     type: 'ADD',
@@ -121,7 +134,7 @@ export function addTodo(text) {
   }
 }
 
-// メモ削除のアクション
+// タスク削除のアクション
 export function deleteTodo(num) {
   return {
     type: 'DELETE_TODO',
@@ -129,7 +142,7 @@ export function deleteTodo(num) {
   }
 }
 
-// メモ削除のアクション
+// タスク削除のアクション
 export function deleteDone(num) {
   return {
     type: 'DELETE_DONE',
@@ -137,7 +150,7 @@ export function deleteDone(num) {
   }
 }
 
-// メモ検索のアクション
+// タスク検索のアクション
 export function findTodo(text) {
   return {
     type: 'FIND',

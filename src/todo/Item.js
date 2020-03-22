@@ -18,7 +18,7 @@ class Item extends Component {
     textOverflow: "ellipsis",
   }
 
-  deadline = {
+  createDate = {
     fontSize:"10pt",
     padding:"0px 5px",
     color:"gray",
@@ -73,8 +73,8 @@ class Item extends Component {
             <div id={this.props.value.message} style={this.todo_title} onClick={this.doOpenDetail}>
               {this.props.value.message}
             </div>
-            <div style={this.deadline}>
-            {f}まで
+            <div style={this.createDate}>
+            {f}に作成
             </div>
           </div>
         </div>

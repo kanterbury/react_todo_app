@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import Item from './Item';
+import DoneItem from './DoneItem';
 
 class Done extends Component {
 
@@ -12,11 +12,20 @@ class Done extends Component {
   render(){
     let doneList;
     let n = 0;
-    console.log(this.props.doneList);
+    
+    switch(this.props.mode){
+      case 'find':
+        doneList = this.props.fDoneList.map((value)=>(
+          <DoneItem key={value.message} value={value} index={n++} isDone={true} />
+        ));
+        break;
 
-    doneList = this.props.doneList.map((value)=>(
-      <Item key={value.message} value={value} index={n++} isDone={true} />
-    ));
+      default:
+        doneList = this.props.doneList.map((value)=>(
+          <DoneItem key={value.message} value={value} index={n++} isDone={true} />
+        ));
+    }
+
     return(
       <div style={this.todoList_area}>
         <ul>{doneList}</ul>

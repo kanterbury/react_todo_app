@@ -20,6 +20,7 @@ class App extends Component {
         <AddForm />
         <hr />
         <FindForm />
+        <hr />
         <Todo />
         <hr />
         <Done />
