@@ -1,3 +1,9 @@
+# Reactで実装したTodoアプリです
+Reduxを使い、Storeがデータを保持しているため、更新するとデータは初期化されます。<br />
+CSSフレームワークとしてBulmaを使用しています。
+
+![画面キャプチャ](https://github.com/kanterbury/react_todo_app/blob/master/snapshot/capture.png)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
