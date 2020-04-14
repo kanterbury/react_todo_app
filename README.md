@@ -1,3 +1,5 @@
+Reactで実装したTodoアプリです。Reduxを使い、Storeがデータを保持しているため、更新するとデータは初期化されます。
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
