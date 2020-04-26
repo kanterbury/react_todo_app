@@ -26,6 +26,9 @@ class DoneItem extends Component {
 
   constructor(props){
     super(props);
+    this.state={
+      isModalActive: false,
+    }
 
     this.doDelete = this.doDelete.bind(this);
   }

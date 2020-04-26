@@ -8,7 +8,7 @@ import Item from './Item';
 class Todo extends Component {
 
   todoList_area = {
-    width:"60%"
+    width:"50%"
   }
 
   render(){

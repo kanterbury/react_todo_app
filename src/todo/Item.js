@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { deleteTodo, doneTodo } from './Store';
-import './Item.css';
+import ClassNames from 'classnames';
 
 
 class Item extends Component {
@@ -46,14 +46,25 @@ class Item extends Component {
   }
 
   doOpenDetail(){
-    // let action = openDetailTodo(this.props.index);
-    // this.props.dispatch(action);
+    
+     this.setState({
+       isModalActive: true
+     });
   }
 
   render(){
     let d = this.props.value.created;
     let f = d.getHours() + ':' + d.getMinutes() + ':' + d.getSeconds();
 
+    const classNameForModal = ClassNames({
+      "modal": true,
+      "is-active": this.state.isModalActive
+    })
+    const classNameForDoneButton = ClassNames({
+      "button": true,
+      "is-primary": true,
+      "is-hidden": this.props.isDone,
+    })
     return (
     <li>
       <nav className="level">
@@ -68,7 +79,7 @@ class Item extends Component {
           </div>
         </div>
         <div className="level-right">
-          <button className="button is-primary" onClick={this.doDone}>Done</button>
+          <button className={classNameForDoneButton} onClick={this.doDone}>Done</button>
           <button className="button" onClick={this.doDelete}>Del</button>
         </div>
       </nav>

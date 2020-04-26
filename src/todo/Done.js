@@ -6,7 +6,7 @@ import DoneItem from './DoneItem';
 class Done extends Component {
 
   todoList_area = {
-    width: "60%"
+    width: "50%"
   }
 
   render(){
