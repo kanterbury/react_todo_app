@@ -1,0 +1,13 @@
+.detailbar {
+  text-align: left;
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  width: 320px;
+  height: 100%;
+  line-height: 42px;
+  background: silver;
+  box-shadow: 0 0 15px black;
+  padding: 10px 5px 0px 10px;
+  /* display: none; */
+}

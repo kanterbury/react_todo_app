@@ -24,8 +24,8 @@ class FindForm extends Component {
           <p className="control has-icons-left">
             <input className="input" type="text" onChange={this.doChange}  value={this.state.message} />
             <span className="icon is-small is-left">
-            <i className="fas fa-search"></i>
-          </span>
+              <i className="fas fa-search"></i>
+            </span>
           </p>
         </div>
       </div>

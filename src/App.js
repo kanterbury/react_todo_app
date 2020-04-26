@@ -5,6 +5,7 @@ import Todo from './todo/Todo';
 import Done from './todo/Done'
 import AddForm from './todo/AddForm';
 import FindForm from './todo/FindForm';
+import Detail from './todo/Detail';
 
 // Appコンポーネント
 class App extends Component {
@@ -24,6 +25,7 @@ class App extends Component {
         <Todo />
         <hr />
         <Done />
+        <Detail />
       </div>
     );
   }

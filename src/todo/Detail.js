@@ -5,24 +5,39 @@ import ClassNames from 'classnames';
 
 class Detail extends Component {
 
+  constructor(props){
+    super(props);
+  }
+
+  detailBar = {
+    textAlign: "left",
+    position: "fixed",
+    top: "0px",
+    right: "0px",
+    width: "320px",
+    height: "100%",
+    lineHeight: "42px",
+    background: "silver",
+    boxShadow: "0 0 15px black",
+    padding: "10px 5px 0px 10px",
+    // display: "none",
+  }
+
+  list = {
+    listStyle: "none",
+    padding: "0",
+    fontWeight: "bold",
+  }
+
   render(){
+
     return(
-      <div className={classNameForModal}>
-        <div className="modal-background"></div>
-        <div className="modal-card">
-          <header className="modal-card-head">
-            <p className="modal-card-title">Modal title</p>
-            <button className="delete" aria-label="close"></button>
-          </header>
-          <section className="modal-card-body">
-            test
-          </section>
-         <footer className="modal-card-foot">
-            <button className="button is-success">Save changes</button>
-            <button className="button">Cancel</button>
-          </footer>
-        </div>
+      <div style={this.detailBar}>
+        <span className="modal-close">
+            <i id="closeDetail" className="fas fa-2x fa-times"></i>
+        </span>
       </div>
     )
   }
 }
+export default connect()(Detail);
